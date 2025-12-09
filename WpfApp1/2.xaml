@@ -1,7 +1,6 @@
-﻿<Window x:Class="SmoothDrive.RegistrationWindow"
+﻿<Window x:Class="WpfApp1._2"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:SmoothDrive"
         Title="Регистрация" 
         Height="1022" 
         Width="1440"
@@ -17,33 +16,15 @@
 
         <!-- Логотип в левом верхнем углу -->
         <StackPanel HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" Margin="90,114,0,0">
-            <TextBlock Text="Smooth Drive" 
-                       FontSize="137" 
-                       FontWeight="Bold" 
-                       Foreground="White" Width="889" Height="174" RenderTransformOrigin="0.515,1.77" Margin="1.3,-50,0,0">
-                <TextBlock.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform AngleX="-0.251"/>
-                        <RotateTransform/>
-                        <TranslateTransform X="-1.717"/>
-                    </TransformGroup>
-                </TextBlock.RenderTransform>
-            </TextBlock>
-            <TextBlock Text="avtoschool" 
-                       FontSize="74" 
-                       Foreground="#FF651111" 
-                       FontStyle="Italic" Margin="0,0,35,0"/>
-        </StackPanel>
+                    VerticalAlignment="Top" Margin="90,114,0,0"/>
 
         <!-- Панель регистрации -->
         <Border Background="#CCFFFFFF" 
                 CornerRadius="15" 
                 Padding="25"
-                HorizontalAlignment="Left" 
+                HorizontalAlignment="Center" 
                 VerticalAlignment="Top"
-                Margin="88,439,0,0" 
+                Margin="0,443,0,0" 
                 Width="446" Height="460">
 
             <StackPanel>
@@ -171,11 +152,28 @@
                                Cursor="Hand"
                                TextDecorations="Underline"
                                HorizontalAlignment="Center"
-                               MouseLeftButtonDown="LoginLink_MouseLeftButtonDown"/>
+                               />
                 </StackPanel>
 
             </StackPanel>
         </Border>
+        <TextBlock Text="Smooth Drive" 
+                       FontSize="137" 
+                       FontWeight="Bold" 
+                       Foreground="White" RenderTransformOrigin="0.515,1.77" Margin="296,32,255,800">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.251"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-1.717"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Text="avtoschool" 
+                       FontSize="74" 
+                       Foreground="#FF651111" 
+                       FontStyle="Italic" Margin="569,198,531,710"/>
 
     </Grid>
 </Window>

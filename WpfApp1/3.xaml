@@ -1,101 +1,177 @@
-﻿<Window x:Class="SmoothDrive.Dashboard"
+﻿<Window x:Class="WpfApp1._3"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Smooth Drive" Height="1024" Width="1440"
-        Background="#F5F5F5">
+        Title="Desktop - 2" Height="650" Width="1000">
 
-    <Grid Width="1440" Height="1024">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="24*"/>
-            <ColumnDefinition Width="1297*"/>
-            <ColumnDefinition Width="101*"/>
-        </Grid.ColumnDefinitions>
-        <!-- Меню слева -->
-        <StackPanel Background="White" Margin="10,20,10,830" Grid.Column="3" Grid.ColumnSpan="3">
-            <TextBlock Text="Главная" FontSize="16" FontWeight="Bold" Margin="10,20,10,10"/>
-            <TextBlock Text="Мой профиль" FontSize="14"/>
-            <TextBlock Text="Обучение" FontSize="14" Margin="10,10"/>
-            <TextBlock Text="Расписание" FontSize="14" Margin="10,10"/>
-        </StackPanel>
+    <Window.Resources>
+        <Style TargetType="{x:Type Border}" x:Key="BottomBlockStyle">
+            <Setter Property="Background" Value="#DCDCDC"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Height" Value="170"/>
+            <Setter Property="Margin" Value="20,0"/>
+        </Style>
 
-        <!-- Основной контент -->
-        <StackPanel Margin="96,239,47,-159" Grid.Column="4">
-            <!-- Заголовок -->
-            <TextBlock Text="Автошкола 'Smooth Drive' - уникальное учебное пространство в г.Санкт-Петербург"
-                       FontSize="16" Margin="0,0,0,30"/>
+        <Style TargetType="{x:Type Button}" x:Key="MainMenuButton">
+            <Setter Property="Background" Value="#606060"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="15,5"/>
+            <Setter Property="Margin" Value="10,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-            <!-- Основная информация -->
-            <Grid>
+        <Style TargetType="{x:Type Button}" x:Key="AccentMenuButton" BasedOn="{StaticResource MainMenuButton}">
+            <Setter Property="Background" Value="#651111"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Fill="#484848"/>
+
+        <Rectangle Grid.Row="1" Fill="#651111"/>
+
+        <Grid Grid.Row="0" Grid.RowSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <DockPanel Grid.Row="0" Height="60">
+                <TextBlock Text="Desktop - 2" Foreground="LightGray" VerticalAlignment="Top" Margin="10,5,0,0" FontSize="12"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,15,20,0" Width="535">
+                    <Button Content="Главная" Style="{StaticResource AccentMenuButton}" RenderTransformOrigin="0.5,0.5" Width="90">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="0"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="0"/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                    <Button Content="Мой профиль" Style="{StaticResource MainMenuButton}" Width="114"/>
+                    <Button Content="Обучение" Style="{StaticResource MainMenuButton}" Width="111"/>
+                    <Button Content="Расписание" Style="{StaticResource MainMenuButton}" Width="118"/>
+                </StackPanel>
+            </DockPanel>
+
+            <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Левая колонка -->
-                <StackPanel Grid.Column="0" Margin="0,0,20,0">
-                    <TextBlock Text="Smooth Drive" FontSize="28" FontWeight="Bold" Margin="0,0,0,30"/>
+                <StackPanel Grid.Column="0" Margin="40,30,20,20" VerticalAlignment="Top">
+                    <TextBlock Text="Автошкола &quot;Smooth Drive&quot; -" Foreground="White" FontSize="20" FontWeight="SemiBold" TextWrapping="Wrap" LineHeight="30"/>
+                    <TextBlock Text="уникальное учебное пространство в" Foreground="White" FontSize="20" FontWeight="SemiBold" TextWrapping="Wrap"/>
+                    <TextBlock Text="г. Санкт-Петербург" Foreground="White" FontSize="20" FontWeight="SemiBold" TextWrapping="Wrap" Margin="0,0,0,30"/>
 
-                    <!-- Плашка Теория -->
-                    <Border Background="White" CornerRadius="10" Padding="20" Margin="0,0,0,20">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Теория" FontSize="18" FontWeight="Bold"/>
-                                <TextBlock Text="0/20" FontSize="18" Foreground="Gray" Margin="10,0,0,0"/>
-                            </StackPanel>
-                            <TextBlock Text="0%" FontSize="16" Foreground="Gray" Margin="0,10,0,0"/>
+                    <Border Background="White" CornerRadius="10" Width="300" Height="200" HorizontalAlignment="Left">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Path Stretch="Uniform" Fill="#651111" Width="60" Height="40" Data="M21,11H3V9H21V11M21,15H3V13H21V15M17,19H3V17H17V19Z"/>
+                            <TextBlock Text="Smooth Drive" Foreground="#651111" FontSize="32" FontWeight="Bold" Margin="0,10,0,0"/>
                         </StackPanel>
                     </Border>
-                    <Border Background="White" CornerRadius="10" Padding="20" RenderTransformOrigin="0.494,0.549">
-                        <StackPanel>
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Вождение" FontSize="18" FontWeight="Bold"/>
-                                <TextBlock Text="0/5" FontSize="18" Foreground="Gray" Margin="10,0,0,0"/>
-                            </StackPanel>
-                            <TextBlock Text="0%" FontSize="16" Foreground="Gray" Margin="0,10,0,0"/>
-                        </StackPanel>
-                    </Border>
-
-                    <!-- Плашка Вождение -->
                 </StackPanel>
 
-                <!-- Правая колонка - Сертификат -->
-                <Border Grid.Column="1" Background="White" CornerRadius="10" Padding="25">
-                    <StackPanel>
-                        <TextBlock Text="Сертификат — отличный подарок по любому поводу!"
-                                   FontSize="18" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,15"/>
+                <Border Grid.Column="1" Background="#606060" CornerRadius="10" Padding="30" Width="400" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,30,0,0">
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Text="Сертификат —" Foreground="White" FontSize="28" FontWeight="Bold" TextWrapping="Wrap"/>
+                            <TextBlock Text="отличный подарок" Foreground="#FFC107" FontSize="28" FontWeight="Bold" TextWrapping="Wrap"/>
+                            <TextBlock Text="по любому поводу!" Foreground="White" FontSize="28" FontWeight="Bold" TextWrapping="Wrap" Margin="0,0,0,15"/>
 
-                        <TextBlock Text="Мы заполним сертификат, распечатаем его и доставим по любому адресу в Санкт-Петербурге."
-                                   FontSize="14" Foreground="Gray" TextWrapping="Wrap" Margin="0,0,0,25"/>
+                            <TextBlock Text="Мы заполним сертификат," Foreground="White" FontSize="16" TextWrapping="Wrap" LineHeight="22"/>
+                            <TextBlock Text="распечатаем его и" Foreground="White" FontSize="16" TextWrapping="Wrap" LineHeight="22"/>
+                            <TextBlock Text="доставим по любому" Foreground="White" FontSize="16" TextWrapping="Wrap" LineHeight="22"/>
+                            <TextBlock Text="адресу в Санкт-" Foreground="White" FontSize="16" TextWrapping="Wrap" LineHeight="22"/>
+                            <TextBlock Text="Петербурге." Foreground="White" FontSize="16" TextWrapping="Wrap" LineHeight="22" Margin="0,0,0,20"/>
+                        </StackPanel>
 
-                        <Button Content="Заказать сертификат" 
-                                Background="#FF4500" 
-                                Foreground="White"
-                                FontSize="16" 
-                                Height="40" 
-                                Width="200"
-                                HorizontalAlignment="Left"/>
-                    </StackPanel>
+                        <Button Content="Заказать сертификат" Background="Transparent" Foreground="#DCDCDC" BorderBrush="#DCDCDC" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="15,8" Margin="0,0,0,-21">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
+                                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <Ellipse Width="120" Height="120" Fill="#FFC107" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,-30,-30,0" Opacity="0.8"/>
+                        <Rectangle Width="76" Height="76" Fill="#FFD700" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,-9,24" RenderTransformOrigin="0.5,0.5">
+                            <Rectangle.RenderTransform>
+                                <RotateTransform Angle="45"/>
+                            </Rectangle.RenderTransform>
+                        </Rectangle>
+                    </Grid>
                 </Border>
             </Grid>
 
-            <!-- Плашка Экзамен -->
-            <Border Background="White" CornerRadius="10" Padding="25" Margin="0,30,0,0" Width="400">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,15">
-                        <TextBlock Text="Экзамен" FontSize="20" FontWeight="Bold"/>
-                        <TextBlock Text="0%" FontSize="20" Foreground="Gray" Margin="20,0,0,0"/>
-                    </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,-60,0,20" HorizontalAlignment="Center">
 
-                    <!-- Здесь можно добавить прогресс-бар если нужно -->
-                    <Border Height="10" Background="#E0E0E0" CornerRadius="5">
-                        <Border Width="0" Background="Gray" CornerRadius="5"/>
-                    </Border>
-                </StackPanel>
-            </Border>
+                <Border Style="{StaticResource BottomBlockStyle}">
+                    <Grid Margin="15">
+                        <StackPanel VerticalAlignment="Top">
+                            <TextBlock Text="Теория" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Text="0/20" FontSize="16" FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="→" FontSize="30" Foreground="#651111" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <Ellipse Width="100" Height="100" Stroke="#651111" StrokeThickness="5" Opacity="0.3"/>
+                            <TextBlock Text="0 %" FontSize="36" FontWeight="Bold" Foreground="#651111" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
 
-        </StackPanel>
+                <Border Style="{StaticResource BottomBlockStyle}">
+                    <Grid Margin="15">
+                        <StackPanel VerticalAlignment="Top">
+                            <TextBlock Text="Вождение" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Text="0/5" FontSize="16" FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="→" FontSize="30" Foreground="#651111" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <Ellipse Width="100" Height="100" Stroke="#651111" StrokeThickness="5" Opacity="0.3"/>
+                            <TextBlock Text="0 %" FontSize="36" FontWeight="Bold" Foreground="#651111" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource BottomBlockStyle}">
+                    <Grid Margin="15">
+                        <StackPanel VerticalAlignment="Top">
+                            <TextBlock Text="Экзамен" FontSize="20" FontWeight="Bold"/>
+                            <TextBlock Text=" " FontSize="16" FontWeight="SemiBold"/>
+                        </StackPanel>
+                        <TextBlock Text="→" FontSize="30" Foreground="#651111" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                        <Grid VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                            <Ellipse Width="100" Height="100" Stroke="#651111" StrokeThickness="5" Opacity="0.3"/>
+                            <TextBlock Text="0 %" FontSize="36" FontWeight="Bold" Foreground="#651111" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </Grid>
+                </Border>
+
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

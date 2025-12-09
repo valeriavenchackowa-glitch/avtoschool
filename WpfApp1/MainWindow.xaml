@@ -1,4 +1,4 @@
-﻿<Window x:Class="SmoothDrive.MainWindow"
+﻿<Window x:Class="WpfApp1.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Smooth Drive" Height="1024" Width="1440"
@@ -6,83 +6,127 @@
         Background="Black">
 
     <Grid>
-        <!-- Фоновое изображение автомобиля -->
-        <Image Source="/Images/car.png.png" Opacity="0.7" Grid.ColumnSpan="2" Stretch="UniformToFill"/>
 
         <!-- Логотип в левом верхнем углу -->
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,30,0,0">
-            <TextBlock Text="Smooth Drive" FontSize="137" FontWeight="Bold" Foreground="White"/>
-            <TextBlock Text="avtoschool" FontSize="74" Foreground="#FF651111" FontStyle="Italic" RenderTransformOrigin="1.147,0.455" Height="92" Width="761"/>
-        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,30,0,0"/>
 
         <!-- Панель авторизации — слева, поверх фона -->
         <Border Background="#80FFFFFF" CornerRadius="15" Padding="20"
-                HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                Margin="53,0,0,200" Width="447" RenderTransformOrigin="0.5,0.5" Height="265">
-            <Border.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.247"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Border.RenderTransform>
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                Margin="0,449,0,0" Width="483" Height="380">
             <StackPanel>
-
                 <!-- Заголовок "Авторизация" -->
-                <TextBlock Text="Авторизация" FontSize="32" FontWeight="SemiBold"
-                           HorizontalAlignment="Center" Margin="0,0,0,15"/>
-                <Border
-                    Margin="0,0,0,10"
-                         >
-                    <Border Height="46" Width="285" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8" Background="White">
-                        <TextBox x:Name="LoginBox" Text="Логин"
-                            Background="{x:Null}" Foreground="Black"
-                            BorderBrush="{x:Null}" BorderThickness="1"
-                            Padding="10" FontSize="24" RenderTransformOrigin="0.5,0.5" Margin="1,-8,141,-9" Width="141">
-                            <TextBox.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform Angle="-0.159"/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </TextBox.RenderTransform>
-                        </TextBox>
-
-                    </Border>
-
-                </Border>
-                <Border
-                    Margin="0,0,0,10"
-                    Height="53" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8" Background="White" Width="286">
-                    <PasswordBox x:Name="PasswordBox" 
-                        Background="{x:Null}" Foreground="Black" BorderThickness="1"
-                        Padding="10" Password="admin" Width="285" BorderBrush="{x:Null}" Height="46" Margin="6,5,-7,0"/>
-
-                </Border>
-                <Border
-                    Height="32"
-                    Width="99" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10" Background="#FF651111">
-                    <Button x:Name="LoginButton" Content="Войти"
-                        Background="{x:Null}" Foreground="White" BorderThickness="0"
-                        Padding="15,0" Margin="-1,-1,1,1" BorderBrush="#FF651111"/>
-
-                </Border>
+                <TextBlock Text="Авторизация" 
+                           FontSize="32" 
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center" 
+                           Margin="0,0,0,20"/>
 
                 <!-- Поле Логин -->
+                <StackPanel Margin="0,0,0,15">
+                    <TextBlock Text="Логин"
+                               FontSize="14"
+                               Foreground="#666666"
+                               Margin="5,0,0,5"/>
+                    <Border Background="White"
+                            CornerRadius="8">
+                        <TextBox x:Name="LoginBox"
+                                 Text=""
+                                 Background="Transparent"
+                                 Foreground="Black"
+                                 BorderThickness="0"
+                                 Padding="15,12"
+                                 FontSize="18"/>
+                    </Border>
+                </StackPanel>
 
                 <!-- Поле Пароль -->
-
-                <!-- Ссылка "Забыли пароль?" -->
-                <TextBlock Text="Забыли пароль?" FontSize="12" Foreground="Black"
-                           HorizontalAlignment="Right" Margin="0,0,0,10"
-                           TextDecorations="Underline" Cursor="Hand" RenderTransformOrigin="0.508,-1.31"/>
+                <StackPanel Margin="0,0,0,25">
+                    <TextBlock Text="Пароль"
+                               FontSize="14"
+                               Foreground="#666666"
+                               Margin="5,0,0,5"/>
+                    <Border Background="White"
+                            CornerRadius="8">
+                        <PasswordBox x:Name="PasswordBox"
+                                     Background="Transparent"
+                                     Foreground="Black"
+                                     BorderThickness="0"
+                                     Padding="15,12"
+                                     FontSize="18"/>
+                    </Border>
+                </StackPanel>
 
                 <!-- Кнопка Войти -->
+                <Button x:Name="LoginButton" 
+                        Content="Войти"
+                        Background="#FF651111" 
+                        Foreground="White" 
+                        BorderThickness="0"
+                        FontSize="18"
+                        FontWeight="SemiBold"
+                        Height="50"
+                        Margin="0,0,0,10"
+                        Cursor="Hand"
+                        Click="LoginButton_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="8"
+                                    Padding="15,0">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
 
+                <!-- Ссылка "Забыли пароль?" -->
+                <TextBlock Text="Забыли пароль?" 
+                           FontSize="12" 
+                           Foreground="Black"
+                           HorizontalAlignment="Right" 
+                           Margin="0,0,0,10"
+                           TextDecorations="Underline" 
+                           Cursor="Hand"/>
+
+                <!-- Разделитель -->
+                <Border Height="1" 
+                        Background="#CCCCCC" 
+                        Margin="0,0,0,15"/>
+
+                <!-- Кнопка для регистрации -->
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Нет профиля?" 
+                               FontSize="14" 
+                               Foreground="#666666"
+                               Margin="0,0,0,5"/>
+
+                    <Button x:Name="RegisterButton"
+                            Content="Зарегистрироваться"
+                            Background="Transparent"
+                            Foreground="#2196F3"
+                            BorderThickness="0"
+                            FontSize="14"
+                            FontWeight="SemiBold"
+                            Padding="10,5"
+                            Cursor="Hand">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="Transparent"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </Border>
-
+        <TextBlock Text="Smooth Drive" FontSize="137" FontWeight="Bold" Foreground="White" Margin="277,30,232,796"/>
+        <Border Margin="550,212,512,661">
+            <TextBlock Text="avtoschool" FontSize="74" Foreground="#FF651111" FontStyle="Italic" Margin="0,0,-30,-46"/>
+        </Border>
     </Grid>
 </Window>
