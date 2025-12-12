@@ -1,0 +1,121 @@
+﻿<Window x:Class="WpfApp1._9"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             
+             xmlns:local="clr-namespace:WpfApp1" 
+             
+			 Title="Управлениие группами"
+
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1200"
+             Background="#E0E0E0"
+             FontFamily="Segoe UI">
+
+	<Grid Margin="15">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="300"/>
+			<ColumnDefinition Width="10"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<Border Grid.Column="0" Background="White" CornerRadius="5" Padding="10">
+			<StackPanel>
+
+				<TextBlock Text="Список Активных Групп" 
+                           FontSize="20" FontWeight="SemiBold" 
+                           Foreground="#3C3B3B" Margin="0,0,0,10"/>
+
+				<Button Content="+ Создать новую группу" Height="30" Margin="0,0,0,15"
+                        Background="#80333A" Foreground="White" BorderThickness="0"
+                        Style="{StaticResource FlatButtonStyle}"/>
+
+				<ListView Height="Auto" BorderThickness="0" Background="White" 
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+					<ListView.ItemContainerStyle>
+						<Style TargetType="ListViewItem">
+							<Setter Property="Padding" Value="10"/>
+							<Setter Property="Margin" Value="0,2"/>
+							<Setter Property="Background" Value="#F0F0F0"/>
+							<Setter Property="BorderBrush" Value="#D0D0D0"/>
+							<Setter Property="BorderThickness" Value="1"/>
+							<Setter Property="Cursor" Value="Hand"/>
+							<Style.Triggers>
+								<Trigger Property="IsSelected" Value="True">
+									<Setter Property="Background" Value="#80333A"/>
+									<Setter Property="Foreground" Value="White"/>
+								</Trigger>
+							</Style.Triggers>
+						</Style>
+					</ListView.ItemContainerStyle>
+
+					<StackPanel>
+						<TextBlock Text="A-2025-Весна" FontWeight="Bold"/>
+						<TextBlock Text="Преподаватель: Иванов И.И." FontSize="12"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="B-2025-Лето" FontWeight="Bold"/>
+						<TextBlock Text="Преподаватель: Петрова А.С." FontSize="12"/>
+					</StackPanel>
+					<StackPanel>
+						<TextBlock Text="C-2025-Осень" FontWeight="Bold"/>
+						<TextBlock Text="Преподаватель: Смирнов В.П." FontSize="12"/>
+					</StackPanel>
+				</ListView>
+			</StackPanel>
+		</Border>
+
+		<GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" Background="#D0D0D0"/>
+
+		<Border Grid.Column="2" Background="White" CornerRadius="5" Padding="20">
+			<StackPanel>
+
+				<TextBlock Text="Детали группы: A-2025-Весна" 
+                           FontSize="24" FontWeight="Bold" 
+                           Foreground="#80333A" Margin="0,0,0,15"/>
+
+				<Grid Margin="0,0,0,20">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<StackPanel Grid.Column="0" Margin="0,0,30,0">
+						<TextBlock Text="Преподаватель:" FontWeight="SemiBold" Foreground="#3C3B3B"/>
+						<TextBlock Text="Начало обучения:" FontWeight="SemiBold" Foreground="#3C3B3B" Margin="0,5,0,0"/>
+						<TextBlock Text="Расписание теории:" FontWeight="SemiBold" Foreground="#3C3B3B" Margin="0,5,0,0"/>
+						<TextBlock Text="Мест занято/всего:" FontWeight="SemiBold" Foreground="#3C3B3B" Margin="0,5,0,0"/>
+					</StackPanel>
+					<StackPanel Grid.Column="1">
+						<TextBlock Text="Иванов Иван Иванович (Категория B)"/>
+						<TextBlock Text="01.03.2025"/>
+						<TextBlock Text="Пн, Ср, 19:00 - 21:00 (Аудитория 103)"/>
+						<TextBlock Text="22 / 25"/>
+					</StackPanel>
+				</Grid>
+
+				<TextBlock Text="Студенты в группе (22 человека)" 
+                           FontSize="18" FontWeight="SemiBold" 
+                           Foreground="#3C3B3B" Margin="0,15,0,10"/>
+
+				<DataGrid AutoGenerateColumns="False" IsReadOnly="True" Height="350"
+                          BorderBrush="#D0D0D0" BorderThickness="1" GridLinesVisibility="Horizontal"
+                          RowBackground="White" AlternatingRowBackground="#F5F5F5">
+					<DataGrid.Columns>
+						<DataGridTextColumn Header="№" Width="Auto" Binding="{Binding Id}"/>
+						<DataGridTextColumn Header="Ф.И.О. Студента" Width="*" Binding="{Binding FullName}"/>
+						<DataGridTextColumn Header="Прогресс (Теория)" Width="150" Binding="{Binding TheoryProgress}"/>
+						<DataGridTextColumn Header="Прогресс (Вождение)" Width="150" Binding="{Binding DrivingProgress}"/>
+						<DataGridTextColumn Header="Статус" Width="100" Binding="{Binding Status}"/>
+					</DataGrid.Columns>
+				</DataGrid>
+
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+					<Button Content="Редактировать группу" Margin="0,0,10,0" Style="{StaticResource ActionButtonStyle}" Width="174"/>
+					<Button Content="Закрыть набор" Style="{StaticResource DangerButtonStyle}" Width="126"/>
+				</StackPanel>
+
+			</StackPanel>
+		</Border>
+	</Grid>
+</Window>

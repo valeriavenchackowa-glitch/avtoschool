@@ -14,14 +14,62 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Логика взаимодействия для _6.xaml
-    /// </summary>
-    public partial class _6 : Window
-    {
-        public _6()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	    /// Логика взаимодействия для _6.xaml
+	    /// </summary>
+	public partial class _6 : Window
+	{
+		public _6()
+		{
+			InitializeComponent();
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			// 1. Создаем новый экземпляр главного окна
+			var mainWindow = new MainWindow();
+
+			// 2. Открываем его
+			mainWindow.Show();
+
+			// 3. Закрываем текущее окно (_6)
+			this.Close();
+		}
+
+		private void Button_Click_1(object sender, RoutedEventArgs e)
+		{
+			// 1. Создаем новый экземпляр окна _5
+			var window5 = new _5();
+
+			// 2. Открываем его
+			window5.Show();
+
+			// 3. Закрываем текущее окно (_6)
+			this.Close();
+		}
+
+		private void Button_Click_2(object sender, RoutedEventArgs e)
+		{
+			// 1. Создаем новый экземпляр окна _4
+			var window4 = new _4();
+
+			// 2. Открываем его
+			window4.Show();
+
+			// 3. Закрываем текущее окно (_6)
+			this.Close();
+		}
+
+		private void Button_Click_3(object sender, RoutedEventArgs e)
+		{
+			// 1. Создаем новый экземпляр окна _3
+			var window3 = new _3();
+
+			// 2. Открываем его
+			window3.Show();
+
+			// 3. Закрываем текущее окно (_6)
+			this.Close();
+		}
+	}
 }

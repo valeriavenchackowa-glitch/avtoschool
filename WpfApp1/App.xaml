@@ -3,7 +3,44 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
+
+	<Application.Resources>
+
+		<Style TargetType="Button" x:Key="FlatButtonStyle">
+			<Setter Property="Background" Value="#E0E0E0"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+							<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="ButtonBorder" Property="Background" Value="#D0D0D0"/>
+							</Trigger>
+							<Trigger Property="IsPressed" Value="True">
+								<Setter TargetName="ButtonBorder" Property="Background" Value="#C0C0C0"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style TargetType="Button" x:Key="ActionButtonStyle" BasedOn="{StaticResource FlatButtonStyle}">
+			<Setter Property="Background" Value="#80333A"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Padding" Value="10,5"/>
+			<Setter Property="Height" Value="35"/>
+		</Style>
+
+		<Style TargetType="Button" x:Key="DangerButtonStyle" BasedOn="{StaticResource ActionButtonStyle}">
+			<Setter Property="Background" Value="#AA3939"/>
+		</Style>
+
+	</Application.Resources>
 </Application>
